@@ -1,18 +1,33 @@
 export const initialProjects = [
     {
+        id: 11,
+        title: "Système d'exploitation",
+        type: "Projet personnel",
+        desc: "Création d'un OS en partant de 0 : écriture du bootloader, du kernel, rétro-comptabilité (passage en mode protégé), implémentation du système de fichiers FAT, gestion des interruptions matérielles (clavier) et communication avec la carte graphique (en mode VGA).",
+        tags: ["C","Assembleur"],
+        year: 2025,
+        dates: "novembre 2025 - Aujourd'hui",
+        area: 'OS',
+        icon: "icons/os.svg",
+        team: 1,
+        languages: ["Assembleur (bootloader)", "C (kernel)"],
+        tools: ["Qemu (machine virtuelle où simuler mon OS)", "Nasm (transformer un fichier assembleur en fichier binaire)"],
+        images: ["os.png"]
+    },
+    {
         id: 10,
         title: "ROM Hacking",
         type: "Projet personnel",
         desc: "Modification de la ROM du jeu Mario Kart DS, en implémentant mes propres textures, sons, et en personnalisant le code via désassembleur pour remplacer l'item 'Banane' par un nouvel item original.",
-        tags: ["C++","ROM"],
+        tags: ["C","ROM"],
         year: 2025,
         dates: "octobre 2025 - novembre 2025",
         area: 'OS',
         icon: "icons/rom.svg",
         team: 1,
-        languages: ["C++", "Assembleur"],
+        languages: ["C", "Assembleur"],
         tools: ["MKDS Course Modifier (ouvrir la ROM du jeu et extraire ses fichiers)", "Ghidra (désassembler et modifier du code binaire)", "Nitro Studio (modifier les fichiers sonores de la ROM)", "Nitro Explorer (modifier la ROM en intégrant mes propres fichiers)"],
-        images: []
+        images: ["rom1.png", "rom2.png"]
     },
     {
         id: 9,
