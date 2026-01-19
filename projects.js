@@ -43,7 +43,7 @@ export const initialProjects = [
         team: 2,
         languages: ["C#", "XAML"],
         tools: ["GitHub (versionner le projet)", "SCRUM (méthode agile de gestion de projet)"],
-        images: []
+        images: ["poker1.png", "poker2.png"]
     },
     {
         id: 8,
