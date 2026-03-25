@@ -3,6 +3,7 @@ export const initialProjects = [
         id: 12,
         title: "Jeu mobile de type Arcade Shooter",
         type: "Projet scolaire",
+        enterprise: "Université Lumière Lyon 2",
         desc: "Développement d'un jeu mobile iOS en 2D, avec le framework SpriteKit, dans lequel le joueur doit survivre à des vagues de zombies. Gestion du highscore, du multitouch, ou encore des animations.",
         tags: ["Swift", "Mobile", "Jeux-vidéos"],
         year: 2026,
