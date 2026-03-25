@@ -1,5 +1,20 @@
 export const initialProjects = [
     {
+        id: 12,
+        title: "Jeu mobile de type Arcade Shooter",
+        type: "Projet scolaire",
+        desc: "Développement d'un jeu mobile iOS en 2D, avec le framework SpriteKit, dans lequel le joueur doit survivre à des vagues de zombies. Gestion du highscore, du multitouch, ou encore des animations.",
+        tags: ["Swift", "Mobile", "Jeux-vidéos"],
+        year: 2026,
+        dates: "mars 2026 - avril 2026",
+        area: 'Application',
+        icon: "icons/zombie.svg",
+        team: 2,
+        languages: ["Swift"],
+        tools: ["Xcode (IDE pour développement iOS)", "SpriteKit (framework pour gérer des scènes avec sprites, animations, sons)"],
+        images: ["zombie.png"]
+    },
+    {
         id: 11,
         title: "Système d'exploitation",
         type: "Projet personnel",
