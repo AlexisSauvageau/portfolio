@@ -28,7 +28,7 @@ export const initialProjects = [
         team: 1,
         languages: ["Assembleur (bootloader)", "C (kernel)"],
         tools: ["Qemu (machine virtuelle où simuler mon OS)", "Nasm (transformer un fichier assembleur en fichier binaire)"],
-        images: ["os.png"]
+        images: ["os.png", "os2.png"]
     },
     {
         id: 10,

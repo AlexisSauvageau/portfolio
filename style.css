@@ -286,7 +286,7 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 
 
 .modal-images img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .modal h2{

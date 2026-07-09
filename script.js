@@ -111,7 +111,11 @@ function openModal(id){
     // Images du projet
     if (p.images && p.images.length > 0) {
         modalImages.innerHTML = p.images
-        .map(src => `<img src="images/${src}" alt="Image du projet ${p.title}">`)
+        .map(src => `
+            <a href="images/${src}" target="_blank" rel="noopener noreferrer">
+                <img src="images/${src}" alt="Image du projet ${p.title}">
+            </a>
+        `)
         .join('');
         modalImages.style.display = 'flex';
     } else {
