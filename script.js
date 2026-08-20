@@ -1,5 +1,10 @@
 /* ---------- Sample data ---------- */
 import { initialProjects } from "./projects.js";
+import {
+    t,
+    setLanguage,
+    getCurrentLanguage
+} from "./i18n.js";
 
 let projects = [...initialProjects];
 
@@ -21,35 +26,53 @@ const modalImages = document.getElementById('modalImages');
 function renderCard(p){
     const el = document.createElement('article');
     el.className = 'card';
-    el.setAttribute('tabindex',0);
+    el.setAttribute('tabindex', 0);
+
+    const title = t(p.title);
+    const desc = t(p.desc);
+    const type = t(p.type);
 
     // On vérifie si p.image existe, sinon on met une image par défaut
     const thumbHTML = p.icon
-        ? `<img src="${p.icon}" alt="aperçu ${escapeHTML(p.title)}" class="thumb-img">`
+        ? `<img src="${p.icon}" alt="aperçu ${escapeHTML(title)}" class="thumb-img">`
         : `<div class="thumb placeholder"></div>`;
 
     el.innerHTML = `
     <div class="meta">
         <div class="thumb">${thumbHTML}</div>
         <div style="flex:1">
-        <div class="title">${escapeHTML(p.title)}</div>
-        <div class="desc">${escapeHTML(p.desc)}</div>
+        <div class="title">${escapeHTML(title)}</div>
+        <div class="desc">${escapeHTML(desc)}</div>
         <div class="tags" aria-hidden>
-            ${p.tags.map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}
+            ${p.tags.map(t => `<span class="tag">${escapeHTML(t)}</span>`).join('')}
         </div>
         </div>
     </div>
     <div class="card-footer">
         <div class="pill ${p.area}">${p.area} • ${p.year}</div>
         <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn detail" data-action="open" data-id="${p.id}">Détails</button>
-        <div class="pill">${p.type}</div>
+
+            <button
+                class="btn detail"
+                data-action="open"
+                data-id="${p.id}">
+                ${getCurrentLanguage() === "fr" ? "Détails" : "Details"}
+            </button>
+
+            <div class="pill">
+                ${escapeHTML(type)}
+            </div>
         </div>
     </div>`;
 
     // keyboard access to details
-    el.addEventListener('keydown', e=>{ if(e.key==='Enter') openModal(p.id); });
-    el.querySelector('[data-action="open"]').addEventListener('click', ()=>openModal(p.id));
+    el.addEventListener('keydown', e => {
+        if(e.key === 'Enter') openModal(p.id);
+    });
+    
+    el.querySelector('[data-action="open"]')
+        .addEventListener('click', () => openModal(p.id));
+
     return el;
 }
 
@@ -68,21 +91,22 @@ function renderGrid(list){
 }
 
 function openModal(id){
-    const p = projects.find(x=>x.id==id); 
+    const p = projects.find(x => x.id == id); 
     if(!p){
         return;
     }
-    modalTitle.innerHTML = `<span class="lightblue">${p.title}</span> • ${p.type}`;
-    modalDesc.textContent = p.desc; 
+
+    modalTitle.innerHTML = `<span class="lightblue">${escapeHTML(t(p.title))}</span> • ${escapeHTML(t(p.type))}`;
+    modalDesc.textContent = t(p.desc);
 
     if(p.enterprise){
-        modalEnterprise.innerText = p.enterprise;
+        modalEnterprise.innerText = t(p.enterprise);
     }
     else{
        modalEnterprise.innerText = ""; 
     }
 
-    modalDates.innerText = p.dates;
+    modalDates.innerText = t(p.dates);
 
     // Taille de l'équipe
     if (p.team && p.team > 0) {
@@ -94,7 +118,7 @@ function openModal(id){
 
     // Langages utilisés
     if (p.languages && p.languages.length > 0) {
-        modalLangList.innerHTML = p.languages.map(lang => `<li>${lang}</li>`).join('');
+        modalLangList.innerHTML = p.languages.map(lang => `<li>${t(lang)}</li>`).join('');
         modalLanguages.style.display = 'block';
     } else {
         modalLanguages.style.display = 'none';
@@ -102,7 +126,7 @@ function openModal(id){
 
     // Outils utilisés
     if (p.tools && p.tools.length > 0) {
-        modalToolsList.innerHTML = p.tools.map(tool => `<li>${tool}</li>`).join('');
+        modalToolsList.innerHTML = p.tools.map(tool => `<li>${t(tool)}</li>`).join('');
         modalTools.style.display = 'block';
     } else {
         modalTools.style.display = 'none';
@@ -190,3 +214,27 @@ document.addEventListener('keydown', e=>{
         backdrop.setAttribute('aria-hidden','true'); 
     } 
 });
+
+// change language
+const languageSelector = document.querySelector('.language-selector');
+const languageButtons = languageSelector.querySelectorAll('.language-btn');
+
+function changeLanguage(language){
+    
+    setLanguage(language);
+    renderGrid(projects);
+
+    // mise à jour visuelle du sélecteur
+    languageSelector.dataset.active = language;
+    languageButtons.forEach(btn => {
+        const isActive = btn.dataset.lang === language;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-pressed', isActive);
+    });
+}
+
+document.getElementById("languageFr")
+    .addEventListener("click", () => changeLanguage("fr"));
+
+document.getElementById("languageEn")
+    .addEventListener("click", () => changeLanguage("en"));

@@ -14,8 +14,8 @@
     <aside class="profile" aria-label="profil">
       <div class="avatar">AS</div>
       <div class="name">Alexis Sauvageau</div>
-      <div class="role">Étudiant · Master Informatique</div>
-      <div class="bio">Passionné d’informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.</div>
+      <div class="role" data-i18n="student">Étudiant · Master Informatique</div>
+      <div class="bio" data-i18n="bio">Passionné d’informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.</div>
 
       <div class="contact">
         <a href="mailto:alexis.sauvageau@outlook.fr">✉️ alexis.sauvageau@outlook.fr</a>
@@ -41,22 +41,36 @@
 
     <main>
       <header class="mainhead">
-        <h1>Portfolio</h1>
+        <h1 data-i18n="portfolio">Portfolio</h1>
         <div class="controls">
-          <div class="search" role="search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <input id="q" placeholder="Rechercher par titre, ou technologie..." />
+
+          <div class="language-selector" data-active="fr" role="group" aria-label="Sélection de la langue">
+            <span class="language-selector__indicator" aria-hidden="true"></span>
+            <button id="languageFr" class="language-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+            <button id="languageEn" class="language-btn" data-lang="en" aria-pressed="false">EN</button>
           </div>
+          
+          <div class="search" role="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <input 
+              id="q"
+              data-i18n-placeholder="search"
+              placeholder="Rechercher par titre, ou technologie..."
+            />
+          </div>
+          
         </div>
       </header>
 
       <div class="filters" role="toolbar" aria-label="Filtres">
-        <button class="btn" data-filter="all">Tous</button>
+        <button class="btn" data-filter="all" data-i18n="all">Tous</button>
         <button class="btn" data-filter="2026">2026</button>
         <button class="btn" data-filter="2025">2025</button>
         <button class="btn" data-filter="2024">2024</button>
         <button class="btn" data-filter="2023">2023</button>
-        <button class="btn primary" id="clearFilters">Réinitialiser</button>
+        <button class="btn primary" id="clearFilters" data-i18n="reset">Réinitialiser</button>
       </div>
 
       <section id="projectsArea">
@@ -82,17 +96,17 @@
         <hr style="margin:16px 0;border:none;border-top:1px solid #ddd;">
 
         <section id="modalTeam" style="margin-top:16px;">
-          <h3>Équipe</h3>
+          <h3 data-i18n="team">Équipe</h3>
           <p id="modalTeamCount" style="margin-top:4px;"></p>
         </section>
 
         <section id="modalLanguages">
-          <h3>Langages utilisés</h3>
+          <h3 data-i18n="languages">Langages utilisés</h3>
           <ul id="modalLangList" style="margin-top:6px;list-style:square;padding-left:20px;"></ul>
         </section>
 
         <section id="modalTools">
-          <h3>Outils utilisés</h3>
+          <h3 data-i18n="tools">Outils utilisés</h3>
           <ul id="modalToolsList" style="margin-top:6px;list-style:square;padding-left:20px;"></ul>
         </section>
 

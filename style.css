@@ -325,3 +325,64 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
     background:linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 100%);
     background-size:200% 100%;animation:shimmer 1.6s infinite linear;border-radius:8px
 }
+
+/* LANGUES */
+
+.language-selector {
+    position: relative;
+    display: inline-flex;
+    padding: 4px;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+}
+ 
+.language-selector__indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #f4f1ea;
+    border-radius: 999px;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+ 
+.language-selector[data-active="en"] .language-selector__indicator {
+    transform: translateX(100%);
+}
+
+.language-btn {
+    position: relative;
+    z-index: 1;
+    min-width: 44px;
+    padding: 7px 0;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.language-btn:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.language-btn.is-active {
+    color: #0d0d0f;
+}
+
+.language-btn:focus-visible {
+    outline: 2px solid #f4f1ea;
+    outline-offset: 3px;
+}
+
+.language-btn:disabled {
+    cursor: default;
+}
