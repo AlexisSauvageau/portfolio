@@ -177,8 +177,18 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
   background: linear-gradient(135deg, #1e293b, #0f172a);
 }
 
-.title{font-weight:700}
-.desc{font-size:13px;color:var(--muted)}
+.title{
+    font-weight:700;
+}
+
+.desc{
+    font-size:13px;
+    color:var(--muted);
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
 #modalTags, .tags{
     display:flex;
     gap:8px;
@@ -225,6 +235,41 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 
 .pill.Web{
    background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(0, 114, 255, 0.6)); 
+}
+
+.project-type {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.03);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 6px 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.project-type:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+}
+
+.project-type-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    color: var(--accent, #6366f1)
 }
 
 /* ---------- Empty / no results ---------- */
@@ -385,4 +430,48 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 
 .language-btn:disabled {
     cursor: default;
+}
+
+/* PAGINATION */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 32px 0;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.08);
+}
+
+.page-btn.active {
+    background: var(--accent, #6366f1);
+    color: #fff;
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.page-ellipsis {
+    padding: 0 4px;
+    opacity: 0.5;
 }

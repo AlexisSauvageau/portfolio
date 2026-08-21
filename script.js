@@ -8,6 +8,9 @@ import {
 
 let projects = [...initialProjects];
 
+let currentPage = 1;
+const itemsPerPage = 6;
+
 const grid = document.getElementById('grid');
 const qInput = document.getElementById('q');
 const backdrop = document.getElementById('backdrop');
@@ -23,6 +26,34 @@ const modalTeam = document.getElementById('modalTeam');
 const modalTeamCount = document.getElementById('modalTeamCount');
 const modalImages = document.getElementById('modalImages');
 
+// renvoie le SVG correspondant au type de projet
+function getTypeIcon(type){
+    const t = type.toLowerCase();
+
+    // Projet scolaire / Academic
+    if(t.includes('scolaire') || t.includes('academic')){
+        return `icons/project-type/academic.svg`;
+    }
+
+    // CDI / CDD / Full-time
+    if(t.includes('cdi') || t.includes('cdd')){
+        return `icons/project-type/work.svg`;
+    }
+
+    // Stage / Internship
+    if(t.includes('stage') || t.includes('internship') || t.includes('intern')){
+        return `icons/project-type/internship.svg`;
+    }
+
+    // Personnel / Personal
+    if(t.includes('personnel') || t.includes('personal')){
+        return `icons/project-type/personal.svg`;
+    }
+
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>`;
+}
+
+// afficher un projet
 function renderCard(p){
     const el = document.createElement('article');
     el.className = 'card';
@@ -59,15 +90,18 @@ function renderCard(p){
                 ${getCurrentLanguage() === "fr" ? "Détails" : "Details"}
             </button>
 
-            <div class="pill">
-                ${escapeHTML(type)}
+            <div class="project-type">
+                <img src="${getTypeIcon(type)}" alt="" class="project-type-icon" aria-hidden="true">
+                <span>${escapeHTML(type)}</span>
             </div>
         </div>
     </div>`;
 
     // keyboard access to details
     el.addEventListener('keydown', e => {
-        if(e.key === 'Enter') openModal(p.id);
+        if(e.key === 'Enter'){
+            openModal(p.id);
+        }
     });
     
     el.querySelector('[data-action="open"]')
@@ -80,14 +114,97 @@ function escapeHTML(s){
     return String(s).replace(/[&<>\"][\u00A0-\u9999<>&]/gim,function(i){return '&#'+i.charCodeAt(0)+';';});
 }
 
+// afficher la grille des projets
 function renderGrid(list){
-    grid.innerHTML='';
-    if(list.length===0){ 
-        grid.innerHTML = '<div class="empty">Aucun projet trouvé — essayez d\'enlever des filtres.</div>'; return; 
+    grid.innerHTML = '';
+    if(list.length === 0){ 
+        grid.innerHTML = '<div class="empty">Aucun projet trouvé — essayez d\'enlever des filtres.</div>';
+        return; 
     }
     const frag = document.createDocumentFragment();
-    list.forEach(p=>frag.appendChild(renderCard(p)));
+    list.forEach(p => frag.appendChild(renderCard(p)));
     grid.appendChild(frag);
+}
+
+// affiche une page de la liste filtrée
+function renderPaginatedGrid(fullList, page = 1){
+    currentPage = page;
+
+    const totalPages = Math.max(1, Math.ceil(fullList.length / itemsPerPage));
+
+    // sécurité si on tombe sur une page qui n'existe plus (ex: après un filtre)
+    if(currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const pageItems = fullList.slice(start, start + itemsPerPage);
+
+    renderGrid(pageItems);
+    renderPagination(fullList.length, totalPages);
+}
+
+function renderPagination(totalItems, totalPages){
+    let pagEl = document.getElementById('pagination');
+    if(!pagEl){
+        pagEl = document.createElement('div');
+        pagEl.id = 'pagination';
+        pagEl.className = 'pagination';
+        grid.after(pagEl); // insère juste après la grille
+    }
+    pagEl.innerHTML = '';
+
+    if(totalPages <= 1) return; // pas besoin de pagination
+
+    const isFr = getCurrentLanguage() === 'fr';
+
+    const makeBtn = (label, page, opts = {}) => {
+        const btn = document.createElement('button');
+        btn.className = 'page-btn' + (opts.active ? ' active' : '');
+        btn.textContent = label;
+        btn.disabled = !!opts.disabled;
+        btn.addEventListener('click', () => {
+            renderPaginatedGrid(opts.list, page);
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        return btn;
+    };
+
+    const list = window.__currentFilteredList || []; // voir point 4
+
+    // bouton précédent
+    pagEl.appendChild(makeBtn(isFr ? '←' : '←', currentPage - 1, {
+        list, disabled: currentPage === 1
+    }));
+
+    // numéros de page avec ellipses pour ne pas surcharger
+    const pages = getPageRange(currentPage, totalPages);
+    pages.forEach(p => {
+        if(p === '...'){
+            const span = document.createElement('span');
+            span.className = 'page-ellipsis';
+            span.textContent = '…';
+            pagEl.appendChild(span);
+        } else {
+            pagEl.appendChild(makeBtn(p, p, { list, active: p === currentPage }));
+        }
+    });
+
+    // bouton suivant
+    pagEl.appendChild(makeBtn(isFr ? '→' : '→', currentPage + 1, {
+        list, disabled: currentPage === totalPages
+    }));
+}
+
+// calcule quels numéros afficher (avec "..." si trop de pages)
+function getPageRange(current, total, delta = 1){
+    const range = [];
+    for(let i = 1; i <= total; i++){
+        if(i === 1 || i === total || (i >= current - delta && i <= current + delta)){
+            range.push(i);
+        } else if(range[range.length - 1] !== '...'){
+            range.push('...');
+        }
+    }
+    return range;
 }
 
 function openModal(id){
@@ -174,7 +291,8 @@ function applyFilters(){
     if(q){ 
         list = list.filter(p=> (p.title+p.languages+p.tools+p.tags.join(' ')+p.area).toLowerCase().includes(q)); 
     }
-    renderGrid(list);
+    window.__currentFilteredList = list;
+    renderPaginatedGrid(list, 1);
 }
 
 // toggle filter buttons
@@ -197,7 +315,8 @@ document.getElementById('clearFilters').addEventListener('click', ()=>{
     document.querySelectorAll('.filters .btn').forEach(x=>x.classList.remove('active'));
     document.querySelector('[data-filter="all"]').classList.add('active');
     qInput.value='';
-    renderGrid(projects);
+    window.__currentFilteredList = projects;
+    renderPaginatedGrid(projects, 1);
 });
 
 // search
@@ -205,7 +324,8 @@ qInput.addEventListener('input', applyFilters);
 
 // init
 document.querySelector('[data-filter="all"]').classList.add('active');
-renderGrid(projects);
+window.__currentFilteredList = projects;
+renderPaginatedGrid(projects, 1);
 
 // keyboard escape to close modal
 document.addEventListener('keydown', e=>{ 
@@ -222,7 +342,8 @@ const languageButtons = languageSelector.querySelectorAll('.language-btn');
 function changeLanguage(language){
     
     setLanguage(language);
-    renderGrid(projects);
+    window.__currentFilteredList = projects;
+    renderPaginatedGrid(projects, currentPage);
 
     // mise à jour visuelle du sélecteur
     languageSelector.dataset.active = language;
