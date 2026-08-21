@@ -36,7 +36,7 @@ function getTypeIcon(type){
     }
 
     // CDI / CDD / Full-time
-    if(t.includes('cdi') || t.includes('cdd')){
+    if(t.includes('cdi') || t.includes('cdd') || t.includes("fixed-term") || t.includes("full-time")){
         return `icons/project-type/work.svg`;
     }
 
