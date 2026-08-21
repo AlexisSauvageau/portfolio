@@ -23,7 +23,7 @@ export const initialProjects = [
             fr: "mars 2026 - avril 2026",
             en: "March 2026 - April 2026"
         },
-        area: "Application",
+        area: "Mobile",
         icon: "icons/zombie.svg",
         team: 2,
         languages: ["Swift"],
@@ -59,7 +59,7 @@ export const initialProjects = [
             fr: "novembre 2025 - Aujourd'hui",
             en: "November 2025 - January 2026"
         },
-        area: "OS",
+        area: "System",
         icon: "icons/os.svg",
         team: 1,
         languages: [
@@ -98,7 +98,7 @@ export const initialProjects = [
             fr: "octobre 2025 - novembre 2025",
             en: "October 2025 - November 2025"
         },
-        area: "OS",
+        area: "System",
         icon: "icons/rom.svg",
         team: 1,
         languages: [
@@ -149,7 +149,7 @@ export const initialProjects = [
             fr: "octobre 2025 - décembre 2025",
             en: "October 2025 - December 2025"
         },
-        area: "Application",
+        area: "Software",
         icon: "icons/agile.svg",
         team: 2,
         languages: [
@@ -253,7 +253,7 @@ export const initialProjects = [
             fr: "janvier 2025",
             en: "January 2025"
         },
-        area: "OS",
+        area: "System",
         icon: "icons/emulator.svg",
         team: 1,
         languages: [
@@ -298,7 +298,7 @@ export const initialProjects = [
             fr: "novembre 2024 - décembre 2024",
             en: "November 2024 - December 2024"
         },
-        area: "IA",
+        area: "AI",
         icon: "icons/ai.svg",
         team: 5,
         languages: [
@@ -393,7 +393,7 @@ export const initialProjects = [
             fr: "septembre 2024 - décembre 2024",
             en: "September 2024 - December 2024"
         },
-        area: "Jeux-vidéos",
+        area: "Graphics",
         icon: "icons/gaming.svg",
         team: 3,
         languages: [
@@ -436,7 +436,7 @@ export const initialProjects = [
             fr: "août 2024 - décembre 2024",
             en: "August 2024 - December 2024"
         },
-        area: "Application",
+        area: "Mobile",
         icon: "icons/mobile.svg",
         team: 6,
         languages: [

@@ -55,19 +55,45 @@ body{
     align-items:center;
 }
 .avatar{
-    width:118px;height:118px;border-radius:50%;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    display:grid;place-items:center;font-weight:800;font-size:34px;color:#06202a;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,var(--accent),var(--accent-2));
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 34px;
+    color: #06202a;
     box-shadow:0 6px 20px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(255,255,255,0.06);
 }
-.name{font-weight:700;font-size:18px}
-.role{font-size:13px;color:var(--muted)}
-.bio{font-size:13px;color:var(--muted);text-align:center}
+
+.name{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.role{
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.bio{
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+}
 
 .contact{
     width:100%;display:flex;flex-direction:column;gap:8px;margin-top:6px
 }
-.contact a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--muted);font-size:13px}
+.contact a{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+}
 
 .skills{
     display:flex;
@@ -87,14 +113,43 @@ body{
 
 /* ---------- Main area ---------- */
 header.mainhead{
-    display:flex;align-items:center;justify-content:space-between;margin-bottom:18px
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
 }
-header.mainhead h1{font-family:'Space Grotesk',sans-serif;font-weight:600;margin:0;font-size:20px}
-header.mainhead .controls{display:flex;gap:10px;align-items:center}
+
+header.mainhead h1{
+    font-family: 'Space Grotesk',sans-serif;
+    font-weight: 600;
+    margin: 0;
+    font-size: 20px;
+}
+
+header.mainhead .controls{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .search{
-    background:var(--glass-2);border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:12px;display:flex;gap:8px;align-items:center;width:320px
+    background: var(--glass-2);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 10px 12px;
+    border-radius: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width:320px;
 }
-.search input{background:transparent;border:0;outline:0;color:inherit;width:100%}
+
+.search input{
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: inherit;
+    width: 100%;
+}
 
 /* ---------- Filters ---------- */
 
@@ -148,13 +203,26 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 }
 .card{
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.04);
-    padding:18px;border-radius:14px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 18px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
     transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s;
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(1,6,20,0.55)}
+.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(1,6,20,0.55);
+}
 
-.card .meta{display:flex;align-items:center;gap:12px}
+.card .meta{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
 .thumb{
     width:68px;
@@ -203,38 +271,42 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
     border:1px solid rgba(255,255,255,0.03);
 }
 
-.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:6px;
+}
 
 .pill{
-    font-size:12px;
-    padding:6px 10px;
-    border-radius:999px;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.03);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: rgba(255,255,255,0.9);
+    background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(var(--accent), 0.14));
+    border: 1px solid rgba(var(--accent), 0.35);
+    backdrop-filter: blur(8px);
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
-.pill.IA{
-    background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(174, 0, 36, 0.6));
+.pill:hover{
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent), 0.6);
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(var(--accent), 0.22));
 }
 
-.pill.Jeux-vidéos{
-    background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(148, 90, 219, 0.6));
-}
-
-.pill.Application{
-    background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(255, 197, 91, 0.8));
-}
-
-.pill.IoT{
-   background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(0, 151, 91, 0.6)); 
-}
-
-.pill.OS{
-   background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(197, 91, 0, 0.9)); 
-}
-
-.pill.Web{
-   background: linear-gradient(-135deg, rgba(0,0,0,0.45), rgba(0, 114, 255, 0.6)); 
+.pill-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgb(var(--accent));
+    box-shadow: 0 0 6px rgba(var(--accent), 0.7);
+    flex-shrink: 0;
 }
 
 .project-type {
@@ -273,7 +345,13 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 }
 
 /* ---------- Empty / no results ---------- */
-.empty{padding:40px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);text-align:center;color:var(--muted)}
+.empty{
+    padding: 40px;
+    border-radius: 14px;
+    background: linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+    text-align: center;
+    color: var(--muted);
+}
 
 /* ---------- Modal ---------- */
 
@@ -356,19 +434,31 @@ header.mainhead .controls{display:flex;gap:10px;align-items:center}
 /* ---------- Responsive ---------- */
 
 @media (max-width:980px){
-    .shell{grid-template-columns:1fr;}
-    .grid{grid-template-columns:repeat(1,1fr)}
-    body{padding:28px}
+    .shell{
+        grid-template-columns: 1fr;
+    }
+    .grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+    body{
+        padding: 28px;
+    }
 }
 
 /* small neat animation */
 @keyframes shimmer{
-    0%{background-position:-200% 0}
-    100%{background-position:200% 0}
+    0%{
+        background-position: -200% 0;
+    }
+    100%{
+        background-position: 200% 0;
+    }
 }
 .skeleton{
-    background:linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 100%);
-    background-size:200% 100%;animation:shimmer 1.6s infinite linear;border-radius:8px
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s infinite linear;
+    border-radius: 8px;
 }
 
 /* LANGUES */

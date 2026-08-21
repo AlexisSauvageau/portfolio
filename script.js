@@ -26,6 +26,16 @@ const modalTeam = document.getElementById('modalTeam');
 const modalTeamCount = document.getElementById('modalTeamCount');
 const modalImages = document.getElementById('modalImages');
 
+const AREAS = {
+  AI:       { label: 'AI',       rgb: '224, 60, 90'   },
+  Graphics: { label: 'Graphics', rgb: '148, 90, 219'  },
+  Mobile:   { label: 'Mobile',   rgb: '255, 197, 91'  },
+  IoT:      { label: 'IoT',      rgb: '0, 200, 130'   },
+  Systems:  { label: 'Systems',  rgb: '230, 130, 40'  },
+  Web:      { label: 'Web',      rgb: '70, 140, 255'  },
+  Software: { label: 'Software', rgb: '20, 184, 166' }
+};
+
 // renvoie le SVG correspondant au type de projet
 function getTypeIcon(type){
     const t = type.toLowerCase();
@@ -51,6 +61,16 @@ function getTypeIcon(type){
     }
 
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>`;
+}
+
+// afficher le domaine du projet
+function renderPill(p) {
+  const a = AREAS[p.area] ?? { label: p.area, rgb: '255,255,255' };
+  return `
+    <div class="pill" style="--accent:${a.rgb}">
+      <span class="pill-dot"></span>${a.label} • ${p.year}
+    </div>
+  `;
 }
 
 // afficher un projet
@@ -80,7 +100,7 @@ function renderCard(p){
         </div>
     </div>
     <div class="card-footer">
-        <div class="pill ${p.area}">${p.area} • ${p.year}</div>
+        ${renderPill(p)}
         <div style="display:flex;gap:8px;align-items:center">
 
             <button
