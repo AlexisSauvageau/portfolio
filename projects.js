@@ -56,7 +56,7 @@ export const initialProjects = [
         tags: ["C", "Assembleur"],
         year: 2025,
         dates: {
-            fr: "novembre 2025 - Aujourd'hui",
+            fr: "novembre 2025 - janvier 2026",
             en: "November 2025 - January 2026"
         },
         area: "System",
@@ -183,8 +183,8 @@ export const initialProjects = [
             en: "Mini World Lyon"
         },
         desc: {
-            fr: "Maintenance logicielle d’un parc miniature dans un job étudiant : programmation de cartes Raspberry et Arduino, révision de l’architecture informatique du parc.",
-            en: "Software maintenance for a miniature park as part of a student job: programming Raspberry Pi and Arduino boards, and redesigning parts of the park's IT architecture."
+            fr: "Maintenance logicielle d’un parc miniature dans un job étudiant : programmation de cartes Raspberry et Arduino, communication réseau avec des sockets, révision de l’architecture informatique du parc.",
+            en: "Software maintenance for a miniature park as part of a student job: programming Raspberry Pi and Arduino boards, network communication using WebSockets, and redesigning parts of the park's IT architecture."
         },
         tags: ["IoT", "Python", "C#"],
         year: 2025,

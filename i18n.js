@@ -56,7 +56,17 @@ const translations = {
 
         bio: "Passionné d’informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.",
 
+        bdd: "Bases de données (SQL & NoSQL)",
+        software: "Logiciel & Desktop",
+        system: "Système",
+        ai: "IA & Data",
+        assembly: "Assembleur",
+        graphics: "Infographie",
+
         filters: "Filtres",
+
+        tabProjects: "Projets",
+        tabStack: "Stack technique",
 
         details: "Détails",
 
@@ -82,7 +92,17 @@ const translations = {
 
         bio: "Passionate about computer science, I develop various projects, mainly web applications and mobile applications. Curious and versatile, I work on personal projects to deepen my skills and take on new technical challenges.",
 
+        bdd: "Databases (SQL & NoSQL)",
+        software: "Software & Desktop",
+        system: "System",
+        ai: "AI & Data",
+        assembly: "Assembly",
+        graphics: "Infographic",
+
         filters: "Filters",
+
+        tabProjects: "Projects",
+        tabStack: "Tech stack",
 
         details: "Details",
 

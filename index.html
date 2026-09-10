@@ -15,29 +15,11 @@
       <div class="avatar">AS</div>
       <div class="name">Alexis Sauvageau</div>
       <div class="role" data-i18n="student">Étudiant · Master Informatique</div>
-      <div class="bio" data-i18n="bio">Passionné d’informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.</div>
+      <div class="bio" data-i18n="bio">Passionné d'informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.</div>
 
       <div class="contact">
         <a href="mailto:alexis.sauvageau@outlook.fr">✉️ alexis.sauvageau@outlook.fr</a>
         <a href="https://www.linkedin.com/in/alexis-sauvageau-252617235">🔗 linkedin.com/alexis-sauvageau</a>
-      </div>
-
-      <div class="skills" aria-hidden>
-        <span class="skill">Angular</span>
-        <span class="skill">React</span>
-        <span class="skill">Vue.js</span>
-        <span class="skill">Node.js</span>
-        <span class="skill">Spring Boot</span>
-        <span class="skill">PHP</span>
-        <span class="skill">Laravel</span>
-        <span class="skill">Kotlin</span>
-        <span class="skill">Swift</span>
-        <span class="skill">Flutter</span>
-        <span class="skill">Python</span>
-        <span class="skill">C/C++</span>
-        <span class="skill">Java</span>
-        <span class="skill">C#</span>
-        <span class="skill">SQL</span>
       </div>
     </aside>
 
@@ -51,32 +33,146 @@
             <button id="languageFr" class="language-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
             <button id="languageEn" class="language-btn" data-lang="en" aria-pressed="false">EN</button>
           </div>
-          
+
+        </div>
+      </header>
+
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button
+          class="tab-btn active"
+          data-tab="projects"
+          role="tab"
+          aria-selected="true"
+          data-i18n="tabProjects">Projets</button>
+        <button
+          class="tab-btn"
+          data-tab="stack"
+          role="tab"
+          aria-selected="false"
+          data-i18n="tabStack">Stack technique</button>
+      </div>
+
+      <section id="panelProjects" class="tab-panel active" role="tabpanel" aria-labelledby="tabProjects">
+
+        <div class="filters-row">
           <div class="search" role="search">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
               <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <input 
+            <input
               id="q"
               data-i18n-placeholder="search"
               placeholder="Rechercher par titre, ou technologie..."
             />
           </div>
-          
+
+          <div class="filters" role="toolbar" aria-label="Filtres">
+            <button class="btn" data-filter="all" data-i18n="all">Tous</button>
+            <button class="btn" data-filter="2026">2026</button>
+            <button class="btn" data-filter="2025">2025</button>
+            <button class="btn" data-filter="2024">2024</button>
+            <button class="btn" data-filter="2023">2023</button>
+            <button class="btn primary" id="clearFilters" data-i18n="reset">Réinitialiser</button>
+          </div>
         </div>
-      </header>
 
-      <div class="filters" role="toolbar" aria-label="Filtres">
-        <button class="btn" data-filter="all" data-i18n="all">Tous</button>
-        <button class="btn" data-filter="2026">2026</button>
-        <button class="btn" data-filter="2025">2025</button>
-        <button class="btn" data-filter="2024">2024</button>
-        <button class="btn" data-filter="2023">2023</button>
-        <button class="btn primary" id="clearFilters" data-i18n="reset">Réinitialiser</button>
-      </div>
+        <section id="projectsArea">
+          <div id="grid" class="grid" aria-live="polite"></div>
+        </section>
 
-      <section id="projectsArea">
-        <div id="grid" class="grid" aria-live="polite"></div>
+      </section>
+
+      <section id="panelStack" class="tab-panel" role="tabpanel" aria-labelledby="tabStack" hidden>
+
+        <div class="skills-wrapper">
+
+          <div class="skill-category">
+            <span class="category-title">Front-end</span>
+            <div class="skills-list">
+              <span class="skill">Angular</span>
+              <span class="skill">React / Next.js</span>
+              <span class="skill">Vue.js</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title">Back-end</span>
+            <div class="skills-list">
+              <span class="skill">Spring Boot</span>
+              <span class="skill">Node.js</span>
+              <span class="skill">PHP</span>
+              <span class="skill">Laravel</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title" data-i18n="bdd">Bases de données (SQL & NoSQL)</span>
+            <div class="skills-list">
+              <span class="skill">Oracle</span>
+              <span class="skill">PostgreSQL</span>
+              <span class="skill">MariaDB</span>
+              <span class="skill">MongoDB</span>
+              <span class="skill">Cypher</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title">Mobile</span>
+            <div class="skills-list">
+              <span class="skill">Kotlin</span>
+              <span class="skill">Swift</span>
+              <span class="skill">Flutter</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title">DevOps</span>
+            <div class="skills-list">
+              <span class="skill">GitHub / GitLab</span>
+              <span class="skill">GitHub Actions</span>
+              <span class="skill">GitLab CI</span>
+              <span class="skill">Docker</span>
+              <span class="skill">Kubernetes</span>
+              <span class="skill">Sonar</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title" data-i18n="software">Logiciel & Desktop</span>
+            <div class="skills-list">
+              <span class="skill">C# (.NET)</span>
+              <span class="skill">Java</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title" data-i18n="system">Système</span>
+            <div class="skills-list">
+              <span class="skill">C</span>
+              <span class="skill" data-i18n="assembly">Assembleur</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title" data-i18n="ai">IA & Data</span>
+            <div class="skills-list">
+              <span class="skill">Python</span>
+              <span class="skill">R</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="category-title" data-i18n="graphics">Infographie</span>
+            <div class="skills-list">
+              <span class="skill">OpenGL</span>
+              <span class="skill">C++</span>
+              <span class="skill">GLSL</span>
+              <span class="skill">Blender</span>
+            </div>
+          </div>
+
+        </div>
+
       </section>
 
     </main>

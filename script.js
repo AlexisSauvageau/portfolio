@@ -379,3 +379,29 @@ document.getElementById("languageFr")
 
 document.getElementById("languageEn")
     .addEventListener("click", () => changeLanguage("en"));
+
+// --------- Tabs (Projets / Stack technique) ---------
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = {
+    projects: document.getElementById('panelProjects'),
+    stack: document.getElementById('panelStack')
+};
+
+function switchTab(tabName){
+    tabButtons.forEach(btn => {
+        const isActive = btn.dataset.tab === tabName;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive);
+    });
+
+    Object.entries(tabPanels).forEach(([name, panel]) => {
+        if(!panel) return;
+        const isActive = name === tabName;
+        panel.classList.toggle('active', isActive);
+        panel.hidden = !isActive;
+    });
+}
+
+tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
