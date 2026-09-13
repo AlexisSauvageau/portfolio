@@ -247,7 +247,7 @@ export const initialProjects = [
             fr: "Création d’un émulateur Chip-8 en C, qui simule toute l’architecture (registres, RAM...) et permet de lancer des ROM pour jouer à des jeux 2D, avec la bibliothèque SDL2.",
             en: "Development of a Chip-8 emulator in C that simulates the entire architecture (registers, RAM, etc.) and runs ROMs to play 2D games using the SDL2 library."
         },
-        tags: ["C", "Assembleur", "SDL"],
+        tags: ["C", "Assembleur", "SDL2"],
         year: 2025,
         dates: {
             fr: "janvier 2025",
@@ -268,8 +268,8 @@ export const initialProjects = [
         ],
         tools: [
             {
-                fr: "SDL (afficher une fenêtre graphique)",
-                en: "SDL (display a graphical window)"
+                fr: "SDL2 (afficher une fenêtre graphique)",
+                en: "SDL2 (display a graphical window)"
             }
         ],
         images: ["emulateur.png"]

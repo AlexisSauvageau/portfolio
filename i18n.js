@@ -56,6 +56,8 @@ const translations = {
 
         bio: "Passionné d’informatique, je développe des projets variés : principalement du web et des applications mobiles. Curieux et polyvalent, je m’investis dans des projets personnels pour approfondir mes compétences et relever de nouveaux défis techniques.",
 
+        listtechno: "Voici la liste des technologies que je maîtrise suffisamment pour les mobiliser sur des projets réels :",
+
         bdd: "Bases de données (SQL & NoSQL)",
         software: "Logiciel & Desktop",
         system: "Système",
@@ -91,6 +93,8 @@ const translations = {
         student: "Student · Master's Degree in Computer Science",
 
         bio: "Passionate about computer science, I develop various projects, mainly web applications and mobile applications. Curious and versatile, I work on personal projects to deepen my skills and take on new technical challenges.",
+
+        listtechno: "Here is the list of technologies I can work with in production-level projects :",
 
         bdd: "Databases (SQL & NoSQL)",
         software: "Software & Desktop",

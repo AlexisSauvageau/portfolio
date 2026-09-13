@@ -237,6 +237,10 @@ header.mainhead .controls{
     display:none;
 }
 
+.list-techno{
+    margin-bottom: 30px;
+}
+
 /* ---------- Filters ---------- */
 
 .filters-row{
